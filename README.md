@@ -11,8 +11,30 @@ express的简单实现
  */
 const express = require('..');
 const app = express();
+const admin = express();
+const member = express();
 
 app.listen(3000);
+
+//子路由嵌套
+app.use('/admin', admin);
+
+//子路由嵌套
+admin.use('/member', member);
+
+//localhost:3000/admin/member/one
+member.get('/one', function (req, res, next) {
+    res.end('subapp member GET /one');
+});
+
+//localhost:3000/admin/ma
+admin
+.get('/ma', function (req, res, next) {
+    res.end('you send GET at path /admin/ma');
+})
+.post('/insert', function (req, res, next) {
+    res.end('you send POST at path /admin/insert');
+});
 
 //全局中间件可用于用户登录验证等
 app.use(function (req, res, next) {
