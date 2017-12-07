@@ -1,5 +1,6 @@
 # my-express
 express的简单实现
+> 参照 `sunkuo/grow-to-express` 项目
 
 # exsamples
 ```js
