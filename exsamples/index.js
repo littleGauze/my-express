@@ -5,12 +5,30 @@
  */
 const express = require('..');
 const app = express();
+const admin = express();
+const member = express();
 
 app.listen(3000);
 
+app.use('/admin', admin);
+
+admin.use('/member', member);
+
+//localhost:3000/admin/member/one
+member.get('/one', function (req, res, next) {
+    res.end('subapp member GET /one');
+});
+
+//localhost:3000/admin/ma
+admin.get('/ma', function (req, res, next) {
+    res.end('you send GET at path /admin/ma');
+}).post('/insert', function (req, res, next) {
+    res.end('you send POST at path /admin/insert');
+});
+
 app.use(function (req, res, next) {
     console.log('auth check');
-    next(new Error('something wrong'));
+    next();
 });
 
 app.use('/name', function (req, res, next) {
@@ -20,7 +38,7 @@ app.use('/name', function (req, res, next) {
 
 app.get('/name', function (req, res, next) {
     req.name = 'nealli';
-    next(new Error('got wrong'));
+    next();
 });
 
 app.get('/name', function (req, res, next) {
