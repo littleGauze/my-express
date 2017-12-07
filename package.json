@@ -1,0 +1,24 @@
+{
+  "name": "my-express",
+  "version": "1.0.0",
+  "description": "express test",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./exsamples/index.js",
+    "debug": "node --inspect ./exsamples/index.js"
+  },
+  "keywords": [
+    "express",
+    "learn"
+  ],
+  "author": "littleGauze",
+  "license": "ISC",
+  "dependencies": {
+    "array-flatten": "^2.1.1",
+    "merge-descriptors": "^1.0.1",
+    "methods": "^1.1.2",
+    "parseurl": "^1.3.2",
+    "path-to-regexp": "^2.1.0"
+  }
+}
